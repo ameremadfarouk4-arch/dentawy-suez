@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dentawy | مستلزمات ومواد الأسنان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&family=Tajawal:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#122A2E;
+    --porcelain:#ECE7DC;
+    --porcelain-2:#E2DCCC;
+    --teal:#3E7688;
+    --teal-dark:#2A5866;
+    --gold:#B8902E;
+    --charcoal:#26312E;
+    --line:#CBC2A9;
+    --white:#FAF8F3;
+    --danger:#A8452F;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    font-family:'Tajawal', sans-serif;
+    background:var(--porcelain);
+    color:var(--charcoal);
+    line-height:1.7;
+  }
+
+  h1,h2,h3, .wordmark, .cat-name{
+    font-family:'Cairo', sans-serif;
+  }
+
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+    direction:ltr;
+    unicode-bidi:isolate;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit; cursor:pointer;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(236,231,220,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .wordmark{
+    font-weight:900; font-size:1.5rem; letter-spacing:0.5px;
+    color:var(--ink);
+    display:flex; align-items:baseline; gap:8px;
+  }
+  .wordmark span.tag{
+    font-family:'Tajawal', sans-serif;
+    font-size:0.72rem; font-weight:500; color:var(--teal-dark);
+  }
+  nav.links{display:flex; gap:32px; font-weight:700; font-size:0.95rem;}
+  nav.links a{position:relative; padding:4px 2px;}
+  nav.links a:hover, nav.links a:focus-visible{color:var(--teal-dark);}
+  nav.links a:focus-visible, .btn:focus-visible, input:focus-visible, textarea:focus-visible, button:focus-visible{
+    outline:3px solid var(--teal); outline-offset:3px;
+  }
+  .nav-cta{
+    background:var(--ink); color:var(--white); font-weight:700;
+    padding:11px 22px; border-radius:3px; font-size:0.9rem;
+    border:1px solid var(--ink);
+  }
+  .nav-cta:hover{background:var(--teal-dark); border-color:var(--teal-dark);}
+  .burger{display:none; background:none; border:none; font-size:1.6rem; color:var(--ink);}
+
+  @media (max-width:860px){
+    nav.links{
+      position:absolute; inset-inline:0; top:100%;
+      background:var(--porcelain); border-bottom:1px solid var(--line);
+      flex-direction:column; padding:18px 28px; gap:18px;
+      display:none;
+    }
+    nav.links.open{display:flex;}
+    .burger{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:84px 0 60px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-inner{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; direction:ltr; unicode-bidi:isolate;
+    display:inline-block; font-size:0.78rem; font-weight:600; letter-spacing:1.5px;
+    color:var(--teal-dark); background:rgba(62,118,136,0.1);
+    padding:6px 12px; border-radius:2px; margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.1rem, 4vw, 3.1rem);
+    font-weight:900; line-height:1.28; color:var(--ink);
+    margin-bottom:22px;
+  }
+  .hero p.sub{
+    font-size:1.12rem; color:#3E4A45; max-width:520px; margin-bottom:34px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-block; padding:15px 28px; border-radius:3px;
+    font-weight:700; font-size:0.98rem; border:1px solid transparent;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-primary{background:var(--teal); color:var(--white); border-color:var(--teal);}
+  .btn-primary:hover{background:var(--teal-dark); transform:translateY(-1px);}
+  .btn-outline{background:transparent; color:var(--ink); border-color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--white);}
+
+  /* Shade guide signature */
+  .shade-guide{display:flex; flex-direction:column; gap:10px;}
+  .shade-row{display:flex; gap:10px;}
+  .shade{
+    flex:1; aspect-ratio:1/1.15; border-radius:4px;
+    display:flex; align-items:flex-end; justify-content:center;
+    padding-bottom:8px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.68rem; font-weight:600;
+    color:rgba(18,42,46,0.55);
+    border:1px solid rgba(18,42,46,0.08);
+  }
+  .shade-caption{
+    font-family:'IBM Plex Mono', monospace; direction:ltr; unicode-bidi:isolate;
+    font-size:0.72rem; color:var(--teal-dark); text-align:center; letter-spacing:0.5px;
+  }
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero{padding:48px 0 40px;}
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    background:var(--ink); color:var(--white);
+    padding:34px 0;
+  }
+  .stats .wrap{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  .stat{text-align:center; flex:1; min-width:160px;}
+  .stat b{display:block; font-family:'Cairo'; font-size:1.9rem; font-weight:800; color:var(--gold);}
+  .stat span{font-size:0.85rem; opacity:0.8;}
+
+  /* ---------- SECTION shared ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem); color:var(--ink); font-weight:800; margin-bottom:14px;}
+  .section-head p{color:#4A554F; font-size:1.02rem;}
+
+  /* divider using shade strip motif */
+  .divider-strip{display:flex; gap:4px; height:6px; margin:0 0 0;}
+  .divider-strip span{flex:1; border-radius:1px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .about-grid p{color:#3E4A45; margin-bottom:18px; font-size:1.02rem;}
+  .points{list-style:none; display:flex; flex-direction:column; gap:16px;}
+  .points li{
+    display:flex; gap:14px; align-items:flex-start;
+    font-weight:700; color:var(--ink); font-size:1rem;
+  }
+  .points li .dot{
+    flex-shrink:0; width:10px; height:10px; border-radius:2px; background:var(--gold); margin-top:6px;
+  }
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr; gap:32px;}}
+
+  /* ---------- PRODUCTS ---------- */
+  .cat-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;}
+  .cat-card{
+    background:var(--white); border:1px solid var(--line); border-radius:4px;
+    padding:28px 24px; transition:border-color .15s ease, transform .15s ease;
+  }
+  .cat-card:hover{border-color:var(--teal); transform:translateY(-3px);}
+  .cat-code{
+    font-family:'IBM Plex Mono', monospace; direction:ltr; unicode-bidi:isolate;
+    font-size:0.78rem; font-weight:600; color:var(--gold); letter-spacing:1px; margin-bottom:14px; display:block;
+  }
+  .cat-name{font-size:1.15rem; font-weight:800; color:var(--ink); margin-bottom:10px;}
+  .cat-card p{color:#4A554F; font-size:0.94rem;}
+  @media (max-width:860px){.cat-grid{grid-template-columns:1fr;}}
+  @media (min-width:861px) and (max-width:1080px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- WHY ---------- */
+  .why{background:var(--ink); color:var(--white);}
+  .why .section-head h2, .why .section-head p{color:var(--white);}
+  .why .section-head p{opacity:0.75;}
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .why-card{border:1px solid rgba(250,248,243,0.15); border-radius:4px; padding:26px 20px;}
+  .why-card .num{font-family:'IBM Plex Mono'; color:var(--gold); font-size:0.85rem; margin-bottom:14px; display:block;}
+  .why-card h3{font-size:1.05rem; font-weight:800; margin-bottom:10px;}
+  .why-card p{font-size:0.9rem; opacity:0.75;}
+  @media (max-width:860px){.why-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:560px){.why-grid{grid-template-columns:1fr;}}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--white); border-top:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px;}
+  .contact-info h3{font-size:1.2rem; font-weight:800; color:var(--ink); margin-bottom:16px;}
+  .contact-info p{color:#4A554F; margin-bottom:22px;}
+  .contact-detail{margin-bottom:14px;}
+  .contact-detail b{display:block; font-size:0.78rem; color:var(--teal-dark); font-weight:700; margin-bottom:2px;}
+  .contact-detail span{font-family:'IBM Plex Mono'; font-size:0.95rem; direction:ltr; unicode-bidi:isolate; display:inline-block;}
+
+  form{display:flex; flex-direction:column; gap:18px;}
+  .form-row{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  label{font-size:0.85rem; font-weight:700; color:var(--ink); margin-bottom:6px; display:block;}
+  input, textarea{
+    width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:3px;
+    background:var(--porcelain); font-family:'Tajawal'; font-size:0.95rem; color:var(--charcoal);
+  }
+  textarea{resize:vertical; min-height:110px;}
+  input:focus, textarea:focus{border-color:var(--teal); background:var(--white);}
+  .submit-btn{align-self:flex-start;}
+  .form-msg{font-size:0.9rem; font-weight:700; margin-top:4px;}
+  .form-msg.ok{color:var(--teal-dark);}
+  .form-msg.err{color:var(--danger);}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr; gap:36px;} .form-row{grid-template-columns:1fr;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:rgba(250,248,243,0.7); padding:32px 0; font-size:0.85rem;}
+  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  .footer-inner a{opacity:0.6; font-size:0.78rem;}
+  .footer-inner a:hover{opacity:1;}
+
+  /* ---------- ADMIN ---------- */
+  #admin-view{display:none; min-height:100vh; background:var(--porcelain);}
+  .admin-bar{
+    background:var(--ink); color:var(--white); padding:18px 0; border-bottom:1px solid var(--line);
+  }
+  .admin-bar .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .admin-bar .wordmark{color:var(--white);}
+  .back-link{font-size:0.85rem; font-weight:700; color:var(--gold);}
+  .gate{
+    max-width:380px; margin:100px auto; background:var(--white); border:1px solid var(--line);
+    border-radius:5px; padding:40px 32px; text-align:center;
+  }
+  .gate h2{font-family:'Cairo'; font-weight:800; color:var(--ink); margin-bottom:8px; font-size:1.3rem;}
+  .gate p{color:#4A554F; font-size:0.9rem; margin-bottom:22px;}
+  .gate input{margin-bottom:14px;}
+  .gate .err-msg{color:var(--danger); font-size:0.85rem; font-weight:700; min-height:18px; margin-bottom:6px;}
+
+  .inbox{max-width:900px; margin:0 auto; padding:48px 28px;}
+  .inbox-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; flex-wrap:wrap; gap:12px;}
+  .inbox-head h2{font-family:'Cairo'; color:var(--ink); font-size:1.5rem;}
+  .refresh-btn{
+    background:var(--teal); color:var(--white); border:none; padding:10px 20px; border-radius:3px; font-weight:700; font-size:0.85rem;
+  }
+  .refresh-btn:hover{background:var(--teal-dark);}
+  .msg-card{
+    background:var(--white); border:1px solid var(--line); border-radius:4px; padding:22px 24px; margin-bottom:16px;
+  }
+  .msg-card-top{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; flex-wrap:wrap; gap:8px;}
+  .msg-card-top h3{font-size:1.02rem; color:var(--ink); font-weight:800;}
+  .msg-card-top time{font-family:'IBM Plex Mono'; font-size:0.75rem; color:var(--teal-dark); direction:ltr; unicode-bidi:isolate;}
+  .msg-meta{font-size:0.85rem; color:var(--teal-dark); font-weight:700; margin-bottom:10px;}
+  .msg-meta span.mono{color:#4A554F; font-weight:500;}
+  .msg-card p.body{color:#3E4A45; font-size:0.95rem;}
+  .empty-state{
+    text-align:center; padding:70px 24px; border:1px dashed var(--line); border-radius:5px; color:#4A554F;
+  }
+  .empty-state h3{font-family:'Cairo'; color:var(--ink); margin-bottom:8px; font-size:1.1rem;}
+</style>
+</head>
+<body>
+
+<!-- ============ MAIN SITE ============ -->
+<div id="site-view">
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <div class="wordmark">DENTAWY <span class="tag">مستلزمات ومواد الأسنان</span></div>
+    <button class="burger" id="burgerBtn" aria-label="فتح القائمة" aria-expanded="false">&#9776;</button>
+    <nav class="links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#about">من نحن</a>
+      <a href="#products">المنتجات</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a href="#contact" class="nav-cta">اطلب عرض سعر</a>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">DENTAL SUPPLY · SUEZ, EG</span>
+      <h1>مستلزمات ومواد الأسنان اللي عيادتك تقدر تعتمد عليها</h1>
+      <p class="sub">دينتاوي بتوفر لعيادات ومعامل الأسنان كل احتياجاتها من المواد والمستهلكات الأصلية، بتوريد منتظم وأسعار تنافسية، عشان مخزون عيادتك ميوقفش أبدًا.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn btn-primary">اطلب عرض سعر</a>
+        <a href="#products" class="btn btn-outline">تصفح الفئات</a>
+      </div>
+    </div>
+    <div>
+      <div class="shade-guide">
+        <div class="shade-row">
+          <div class="shade" style="background:#F3EAD6;">A1</div>
+          <div class="shade" style="background:#EEE0BE;">A2</div>
+          <div class="shade" style="background:#E6D0A0;">A3</div>
+          <div class="shade" style="background:#D9BC85;">A3.5</div>
+        </div>
+        <div class="shade-row">
+          <div class="shade" style="background:#E8DDC8;">B1</div>
+          <div class="shade" style="background:#DDCBA3;">B2</div>
+          <div class="shade" style="background:#CBAF7C;">B3</div>
+          <div class="shade" style="background:#BC9C63;">C2</div>
+        </div>
+        <div class="shade-caption">SHADE MATCH · A1&mdash;D4 · EVERY BATCH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>+120</b><span>نوع منتج متوفر</span></div>
+    <div class="stat"><b>+300</b><span>عيادة بتثق فينا</span></div>
+    <div class="stat"><b>48 ساعة</b><span>متوسط وقت التوصيل</span></div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow">ABOUT DENTAWY</span>
+      <h2 style="font-size:1.9rem; color:var(--ink); font-weight:800; margin-bottom:18px;">من نحن</h2>
+      <p>دينتاوي شركة متخصصة في توريد المواد والمستلزمات المستهلكة لعيادات ومعامل الأسنان في مصر. بنشتغل مع موردين موثوقين عشان نضمن إن كل منتج مطابق للمواصفات ووصل لعيادتك في الوقت المناسب.</p>
+      <p>هدفنا إن الطبيب يركّز في شغله وشغل عيادته، ونحن نتكفل بإن المخزون دايمًا جاهز.</p>
+    </div>
+    <ul class="points">
+      <li><span class="dot"></span> منتجات أصلية 100% ومطابقة للمواصفات الطبية</li>
+      <li><span class="dot"></span> توريد منتظم يمنع أي انقطاع في مخزون العيادة</li>
+      <li><span class="dot"></span> فريق دعم فني بيرد بسرعة على أي استفسار أو طلب</li>
+      <li><span class="dot"></span> أسعار تنافسية على كل فئات المنتجات</li>
+    </ul>
+  </div>
+</section>
+
+<section id="products">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CATALOG</span>
+      <h2>الفئات اللي بنوفرها</h2>
+      <p>كل فئة منتجات ليها كود خاص في نظام التوريد بتاعنا، عشان تقدر تطلب بسرعة وبدون لخبطة.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;01</span>
+        <h3 class="cat-name">مواد الطبع والقياس</h3>
+        <p>ألجينات وسيليكون بأنواعه لطبعات دقيقة وثابتة.</p>
+      </div>
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;02</span>
+        <h3 class="cat-name">مواد الحشو والترميم</h3>
+        <p>كمبوزيت، أسمنت، ولاصقات بجودة وشيدات لونية متعددة.</p>
+      </div>
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;03</span>
+        <h3 class="cat-name">مستلزمات الوقاية والتعقيم</h3>
+        <p>قفازات، كمامات، ومعقمات مطابقة لمعايير السلامة.</p>
+      </div>
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;04</span>
+        <h3 class="cat-name">أدوات ومستهلكات الفحص</h3>
+        <p>أطقم فحص، إبر، وأدوات يومية لكل جلسة كشف.</p>
+      </div>
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;05</span>
+        <h3 class="cat-name">مواد المعامل والجبس</h3>
+        <p>جبس، شمع، ومواد تجهيز لمعامل الأسنان.</p>
+      </div>
+      <div class="cat-card">
+        <span class="cat-code">CAT&#8209;06</span>
+        <h3 class="cat-name">مستلزمات التخدير الموضعي</h3>
+        <p>أمبولات وإبر تخدير من ماركات موثوقة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="background:rgba(250,248,243,0.1); color:var(--gold);">WHY DENTAWY</span>
+      <h2>ليه تختار دينتاوي</h2>
+      <p>مش بس بنبيع مستلزمات، إحنا شريك التوريد اللي عيادتك محتاجاه.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="num mono">01</span>
+        <h3>جودة مضمونة</h3>
+        <p>كل منتج بيمر بفحص جودة قبل ما يوصلك.</p>
+      </div>
+      <div class="why-card">
+        <span class="num mono">02</span>
+        <h3>توريد منتظم</h3>
+        <p>جدول توريد ثابت يحمي مخزون عيادتك من الانقطاع.</p>
+      </div>
+      <div class="why-card">
+        <span class="num mono">03</span>
+        <h3>دعم فني سريع</h3>
+        <p>فريقنا بيرد على استفساراتك وطلباتك في نفس اليوم.</p>
+      </div>
+      <div class="why-card">
+        <span class="num mono">04</span>
+        <h3>أسعار تنافسية</h3>
+        <p>أسعار مدروسة تناسب العيادات الصغيرة والكبيرة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <span class="eyebrow">GET IN TOUCH</span>
+      <h3>اطلب عرض سعر أو استفسر عن منتج</h3>
+      <p>ابعتلنا تفاصيل عيادتك واحتياجاتك، وفريقنا هيتواصل معاك في أقرب وقت.</p>
+      <div class="contact-detail">
+        <b>الهاتف</b>
+        <span class="mono">+20 112 136 6928</span><br>
+        <span class="mono">+20 106 013 1378</span>
+      </div>
+      <div class="contact-detail">
+        <b>البريد الإلكتروني</b>
+        <span class="mono">dentawymedical@gmail.com</span>
+      </div>
+      <div class="contact-detail">
+        <b>العنوان</b>
+        <span>السويس، مصر</span>
+      </div>
+      <div class="contact-detail">
+        <b>مواعيد العمل</b>
+        <span>السبت &ndash; الخميس، 9 صباحًا &ndash; 6 مساءً</span>
+      </div>
+    </div>
+    <form id="contactForm">
+      <div class="form-row">
+        <div>
+          <label for="fName">الاسم</label>
+          <input type="text" id="fName" required>
+        </div>
+        <div>
+          <label for="fClinic">اسم العيادة</label>
+          <input type="text" id="fClinic" required>
+        </div>
+      </div>
+      <div>
+        <label for="fPhone">رقم الهاتف</label>
+        <input type="tel" id="fPhone" required>
+      </div>
+      <div>
+        <label for="fMsg">تفاصيل الطلب أو الاستفسار</label>
+        <textarea id="fMsg" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary submit-btn">إرسال الطلب</button>
+      <p class="form-msg" id="formMsg"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Dentawy &mdash; جميع الحقوق محفوظة</span>
+    <a href="#" id="adminLink">دخول الفريق</a>
+  </div>
+</footer>
+
+</div>
+
+<!-- ============ ADMIN VIEW ============ -->
+<div id="admin-view">
+  <div class="admin-bar">
+    <div class="wrap">
+      <div class="wordmark" style="font-size:1.1rem;">DENTAWY <span class="tag" style="opacity:0.7;">لوحة التحكم</span></div>
+      <a href="#" class="back-link" id="backToSite">الرجوع للموقع &larr;</a>
+    </div>
+  </div>
+
+  <div id="gateBox" class="gate">
+    <h2>دخول لوحة التحكم</h2>
+    <p>الرسائل دي بتوصل من نموذج التواصل في الموقع. اكتب كلمة المرور للمتابعة.</p>
+    <input type="password" id="gatePass" placeholder="كلمة المرور">
+    <p class="err-msg" id="gateErr"></p>
+    <button class="btn btn-primary" style="width:100%;" id="gateSubmit">دخول</button>
+  </div>
+
+  <div id="inboxBox" class="inbox" style="display:none;">
+    <div class="inbox-head">
+      <h2>رسائل العملاء</h2>
+      <button class="refresh-btn" id="refreshBtn">تحديث</button>
+    </div>
+    <div id="msgList"></div>
+  </div>
+</div>
+
+<script>
+  // ---- Mobile nav ----
+  const burgerBtn = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    burgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    burgerBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // ---- Contact form -> shared persistent storage ----
+  const MESSAGES_KEY = 'dentawy:contact-messages';
+  const ADMIN_PASSCODE = 'dentawy2026';
+
+  const contactForm = document.getElementById('contactForm');
+  const formMsg = document.getElementById('formMsg');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const entry = {
+      name: document.getElementById('fName').value.trim(),
+      clinic: document.getElementById('fClinic').value.trim(),
+      phone: document.getElementById('fPhone').value.trim(),
+      message: document.getElementById('fMsg').value.trim(),
+      date: new Date().toISOString()
+    };
+
+    formMsg.textContent = 'جاري الإرسال...';
+    formMsg.className = 'form-msg';
+
+    try {
+      let list = [];
+      try {
+        const existing = await window.storage.get(MESSAGES_KEY, true);
+        if (existing && existing.value) list = JSON.parse(existing.value);
+      } catch (readErr) {
+        list = [];
+      }
+      list.unshift(entry);
+      const result = await window.storage.set(MESSAGES_KEY, JSON.stringify(list), true);
+      if (!result) throw new Error('save failed');
+      formMsg.textContent = 'تم استلام رسالتك، هنتواصل معاك قريب.';
+      formMsg.className = 'form-msg ok';
+      contactForm.reset();
+    } catch (err) {
+      console.error('Storage error:', err);
+      formMsg.textContent = 'حصل خطأ أثناء الإرسال، حاول تاني.';
+      formMsg.className = 'form-msg err';
+    }
+  });
+
+  // ---- Admin view routing ----
+  const siteView = document.getElementById('site-view');
+  const adminView = document.getElementById('admin-view');
+  const adminLink = document.getElementById('adminLink');
+  const backToSite = document.getElementById('backToSite');
+  const gateBox = document.getElementById('gateBox');
+  const inboxBox = document.getElementById('inboxBox');
+  const gatePass = document.getElementById('gatePass');
+  const gateErr = document.getElementById('gateErr');
+  const gateSubmit = document.getElementById('gateSubmit');
+  const msgList = document.getElementById('msgList');
+  const refreshBtn = document.getElementById('refreshBtn');
+
+  function showAdmin() {
+    siteView.style.display = 'none';
+    adminView.style.display = 'block';
+    gateBox.style.display = 'block';
+    inboxBox.style.display = 'none';
+    gatePass.value = '';
+    gateErr.textContent = '';
+  }
+  function showSite() {
+    adminView.style.display = 'none';
+    siteView.style.display = 'block';
+  }
+
+  adminLink.addEventListener('click', (e) => { e.preventDefault(); showAdmin(); });
+  backToSite.addEventListener('click', (e) => { e.preventDefault(); showSite(); });
+
+  gateSubmit.addEventListener('click', () => {
+    if (gatePass.value === ADMIN_PASSCODE) {
+      gateBox.style.display = 'none';
+      inboxBox.style.display = 'block';
+      loadMessages();
+    } else {
+      gateErr.textContent = 'كلمة المرور غير صحيحة';
+    }
+  });
+  gatePass.addEventListener('keydown', (e) => { if (e.key === 'Enter') gateSubmit.click(); });
+
+  function formatDate(iso) {
+    try {
+      const d = new Date(iso);
+      return d.toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' });
+    } catch { return iso; }
+  }
+
+  async function loadMessages() {
+    msgList.innerHTML = '<p style="color:#4A554F;">جاري التحميل...</p>';
+    try {
+      let list = [];
+      try {
+        const result = await window.storage.get(MESSAGES_KEY, true);
+        if (result && result.value) list = JSON.parse(result.value);
+      } catch (readErr) {
+        list = [];
+      }
+
+      if (!list.length) {
+        msgList.innerHTML = `
+          <div class="empty-state">
+            <h3>لسه مفيش رسائل</h3>
+            <p>لما حد يبعت طلب من نموذج التواصل في الموقع، هيظهر هنا.</p>
+          </div>`;
+        return;
+      }
+
+      msgList.innerHTML = list.map(m => `
+        <div class="msg-card">
+          <div class="msg-card-top">
+            <h3>${escapeHtml(m.name || 'بدون اسم')}</h3>
+            <time>${formatDate(m.date)}</time>
+          </div>
+          <div class="msg-meta">
+            ${escapeHtml(m.clinic || '')} &middot; <span class="mono">${escapeHtml(m.phone || '')}</span>
+          </div>
+          <p class="body">${escapeHtml(m.message || '')}</p>
+        </div>
+      `).join('');
+    } catch (err) {
+      console.error(err);
+      msgList.innerHTML = '<p style="color:var(--danger);">حصل خطأ في تحميل الرسائل.</p>';
+    }
+  }
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  refreshBtn.addEventListener('click', loadMessages);
+</script>
+</body>
+</html>
